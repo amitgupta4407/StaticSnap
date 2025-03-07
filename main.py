@@ -10,10 +10,10 @@ STATIC_FOLDER = "static"
 
 app.mount("/static", StaticFiles(directory=STATIC_FOLDER), name="static")
 
-@app.get("/img_cnt")
+@app.get("/")
 async def image_count():
     image_files = glob.glob(os.path.join(STATIC_FOLDER, '*.*'))
-    return {'count': len(image_files)}
+    return {'msg': f'Total number of images: {len(image_files)}'}
 
 @app.get("/images")
 async def get_images():
